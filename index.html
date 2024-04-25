@@ -1,0 +1,77 @@
+<html>
+<head>
+</head>
+<body>
+<SCRIPT language="JavaScript" SRC="isi.js"></SCRIPT> <!-- Tidak perlu komentar di dalam tag SCRIPT -->
+<script>
+function tekan() {
+    var namastr = document.formj.nama.value;
+    var nohpstr = document.formj.nohp.value;
+    var destinasistr = document.formj.destinasi.value;
+    var ket = "";
+    var admin = 0;
+    if (document.formj.langsung.checked) {
+        ket = "Langsung";
+    } else {
+        ket = "Melalui Aplikasi";
+        admin = 2500;
+    }
+    var dewasastr = parseFloat(document.formj.dewasa.value);
+    if (isNaN(dewasastr))
+        dewasastr = 0.0;
+    var anakstr = parseFloat(document.formj.anak.value);
+    if (isNaN(anakstr))
+        anakstr = 0.0;
+    var uangstr = parseFloat(document.formj.uang.value);
+    if (isNaN(uangstr))
+        uangstr = 0.0;
+    var jumlah = dewasastr + " Dewasa " + anakstr + " Anak";
+    var hasildewasa = dewasastr * 10000;
+    var hasilanak = anakstr * 5000;
+    var biaya = hasildewasa + hasilanak;
+    var sisa = uangstr - biaya;
+    document.formj.onama.value = namastr;
+    document.formj.onohp.value = nohpstr;
+    document.formj.odestinasi.value = destinasistr;
+    document.formj.opembayaran.value = ket;
+    document.formj.openumpang.value = jumlah;
+    document.formj.oadmin.value = "Rp. " + admin;
+    document.formj.obiaya.value = "Rp. " + biaya;
+    document.formj.ouang.value = "Rp. " + uangstr;
+    document.formj.osisa.value = "Rp. " + sisa; 
+}
+</script>
+<form name="formj">
+    <PRE>
+Nama Pemesan : <input type="text" size="30" name="nama">
+No Telp      : <input type="text" size="15" name="nohp">
+Destinasi    : <select name="destinasi" Size="1">
+                    <option value="Stasiun Air Tawar">Stasiun Air Tawar</option>
+                    <option value="Stasiun Tabing">Stasiun Tabing</option>
+                    <option value="Stasiun Lubuk Alung">Stasiun Lubuk Alung</option>
+                    <option value="Stasiun Naras">Stasiun Naras</option>
+                </select>
+Pembayaran   : <input type="checkbox" value="Langsung" name="langsung">Langsung (Jika melalui aplikasi tidak usah di centang)
+Jumlah Penumpang
+Dewasa       : <input type="text" size="3" name="dewasa"> (10.000 per orang)
+Anak-anak    : <input type="text" size="3" name="anak"> (5.000 per orang)
+Jumlah Uang  : <input type="text" size="15" name="uang"> (Misal: 50000, tanpa spasi dan titik)
+
+<input type="button" value="kirim" onclick="tekan()"> <input type="reset" value="ulang">
+    </PRE>
+    <hr>
+    <h3>Output</h3>
+    <PRE>
+Pemesanan Atas Nama : <input type="text" size="30" name="onama">
+Nomor Telpon        : <input type="text" size="30" name="onohp">
+Destinasi Tujuan    : <input type="text" size="30" name="odestinasi">
+Jenis Pembayaran    : <input type="text" size="30" name="opembayaran">
+Jumlah Penumpang    : <input type="text" size="30" name="openumpang">
+Biaya Admin         : <input type="text" size="30" name="oadmin">
+Jumlah Biaya        : <input type="text" size="30" name="obiaya">
+Jumlah Uang         : <input type="text" size="30" name="ouang">
+Sisa Uang           : <input type="text" size="30" name="osisa">
+    </PRE>
+</form>
+</body>
+</html>
